@@ -23,10 +23,6 @@ sample_B_only= bernoulli.rvs(size= sample_size, p= prob_B_only)
 
 
 #calculating P(A-B):
-count=0
-for i in range(sample_size):
-    if sample_A[i] == 1 and sample_AB[i] ==0:
-        count +=1
 
 quant_A= np.nonzero(sample_A==1)
 quant_AB= np.nonzero(sample_AB==1)       
@@ -36,10 +32,7 @@ print("P(A-B) = ", prob_A_only)
 print("which is approximately equal to 0.05(theoritical value)")
 
 #calculating P(B):
-count=0
-for i in range(sample_size):
-    if sample_B_only[i] == 1 and sample_AB[i] == 1:
-        count +=1
+
         
 quant_B_only= np.nonzero(sample_B_only==1)
 quant_AB= np.nonzero(sample_AB==1)       
