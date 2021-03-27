@@ -130,32 +130,36 @@ and latex codes from
 \begin{lstlisting}
 https://github.com/Digjoy12/probability/blob/main/Assignment%203/main.tex
 \end{lstlisting}
-\section{Problem}
-(Gate MA - 2016 Q.47) Let $X_{1}$ be	an	exponential	random	variable with mean 1 and $X_{2}$ a gamma	random variable	with mean 2	and	variance 2.	If $X_{1}$ and $X_{2}$ are independently	distributed, then $\pr{X_1 < X_2}$ is equal	to ..........	
-\section{Solution}
+\section*{\textbf{Problem}}
+\textbf{(GATE MA - 2016 Q.47)} Let $X_{1}$ be	an	exponential	random	variable with mean 1 and $X_{2}$ a gamma	random variable	with mean 2	and	variance 2.	If $X_{1}$ and $X_{2}$ are independently	distributed, then $\pr{X_1 < X_2}$ is equal	to ..........	
+\section*{\textbf{Solution}}
 We know that,
 \begin{align}
     f(X_1) = 
     \begin{cases}
-    0   & x < 0\\
-    \frac{\exp{(\frac{{-X_1}}{\beta}})}{\beta} & 0\le x < \infty\\
+    0   & X_1 < 0\\
+    \lambda e^{\lambda x} & 0\le X_1 < \infty\\
     \end{cases}
 \end{align}
-Given, $E(X_1)=\beta=1$\\
+Given, 
+\begin{align}
+   E(X_1)=\cfrac{1}{\lambda}&=1\\ 
+   \implies \lambda &=1
+\end{align}
 Therefore,
 \begin{align}
     f(X_1) = 
     \begin{cases}
-    0   & x < 0\\
-    \exp{(-X_1)} & 0\le x < \infty\\
+    0   & X_1 < 0\\
+    e^{-X_1} & 0\le X_1 < \infty\\
     \end{cases}
 \end{align}
 We know that,
 \begin{align}
     f(X_2) = 
     \begin{cases}
-    0   & x < 0\\
-    \frac{X_{2}^{\alpha-1}\exp{(\frac{-X_2}{\beta})}}{\beta^{\alpha}\Gamma(\alpha)} & 0\le x < \infty\\
+    0   & X_2 < 0\\
+    \cfrac{X_{2}^{\alpha-1}e^{(\frac{-X_2}{\beta})}}{\beta^{\alpha}\Gamma(\alpha)} & 0\le X_2 < \infty\\
     \end{cases}
 \end{align}
 Given, 
@@ -172,8 +176,8 @@ Therefore,
 \begin{align}
     f(X_2) = 
     \begin{cases}
-    0   & x < 0\\
-    X_2\exp{(-X_2)} & 0\le x < \infty\\
+    0   & X_2 < 0\\
+    X_2e^{-X_2} & 0\le X_2 < \infty\\
     \end{cases}
 \end{align}
 
@@ -188,21 +192,22 @@ Alternately, we have CDF of $X_1$ and $X_2$ given by
     F_{X_1}(x) = 
     \begin{cases}
      0   & x < 0\\
-    1-\exp{(-x)} & 0\le x < \infty\\
+    1-e^{-x} & 0\le x < \infty\\
     \end{cases}
 \end{align}
 \begin{align}
     F_{X_2}(x) = 
     \begin{cases}
     0   & x < 0\\
-    1-(x+1)\exp{(-x)} & 0\le x < \infty\\
+    1-(x+1)e^{-x} & 0\le x < \infty\\
     \end{cases}
 \end{align}
 
-Thus 
+Thus, 
 \begin{align}
     \pr{X_1\le X_2} &= \int_{-\infty}^{\infty} F_{X_1}(x)f(X_2)dX\\
-                &= \int_0^\infty -\exp{(-x)}x\exp{(-x)}dx\\
-                &= \cfrac{3}{4}
+                &= \int_0^\infty(1-e^{-x})(xe^{-x})dx\\
+                &= \cfrac{3}{4}\\
+                &= 0.75
 \end{align}
 \end{document}
