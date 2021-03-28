@@ -135,10 +135,10 @@ https://github.com/Digjoy12/probability/blob/main/Assignment%203/main.tex
 \section*{\textbf{Solution}}
 We know that,
 \begin{align}
-    f(X_1) = 
+    f_{X_1}(x) = 
     \begin{cases}
-    0   & X_1 < 0\\
-    \lambda e^{\lambda x} & 0\le X_1 < \infty\\
+    0   & x < 0\\
+    \lambda e^{\lambda x} & 0\le x < \infty\\
     \end{cases}
 \end{align}
 Given, 
@@ -148,18 +148,18 @@ Given,
 \end{align}
 Therefore,
 \begin{align}
-    f(X_1) = 
+    f_{X_1}(x) = 
     \begin{cases}
-    0   & X_1 < 0\\
-    e^{-X_1} & 0\le X_1 < \infty\\
+    0   & x < 0\\
+    e^{-x} & 0\le x < \infty\\
     \end{cases}
 \end{align}
 We know that,
 \begin{align}
-    f(X_2) = 
+    f_{X_2}(x) = 
     \begin{cases}
-    0   & X_2 < 0\\
-    \cfrac{X_{2}^{\alpha-1}e^{(\frac{-X_2}{\beta})}}{\beta^{\alpha}\Gamma(\alpha)} & 0\le X_2 < \infty\\
+    0   & x < 0\\
+    \cfrac{x^{\alpha-1}e^{\brak{\frac{-x}{\beta}}}}{\beta^{\alpha}\Gamma(\alpha)} & 0\le x < \infty\\
     \end{cases}
 \end{align}
 Given, 
@@ -174,10 +174,10 @@ Solving \ref{eq:2.0.4} and \ref{eq:2.0.5}, we get,
 $\alpha=2$, $\beta=1$ and $\Gamma(2)=1$\\
 Therefore,
 \begin{align}
-    f(X_2) = 
+    f_{X_2}(x) = 
     \begin{cases}
-    0   & X_2 < 0\\
-    X_2e^{-X_2} & 0\le X_2 < \infty\\
+    0   & x < 0\\
+    xe^{-x} & 0\le x < \infty\\
     \end{cases}
 \end{align}
 
@@ -186,6 +186,22 @@ Therefore,
 \includegraphics[width=\columnwidth]{figure.png}
 \caption{Probability Distribution of $(X_1, X_2)$}
 \end{figure}
+
+Calculating the CDF of $f_{X_2}(x)$,\\
+When $x< 0$,
+\begin{align}
+   F_{X_2}(x)&=\int_{-\infty}^0 0dx\\
+   F_{X_2}(x)&=0
+\end{align}
+When $x\geq 0$,
+\begin{align}
+    F_{X_2}(x)&=\int_0^\infty xe^{-x}dx\\
+    F_{X_2}(x)&= -(x+1)e^{-x}\\
+\end{align}
+Since,CDF is never negative
+\begin{equation}
+F_{X_2}(x)&=1-(x+1)e^{-x}  
+\end{equation}
 
 Alternately, we have CDF of $X_1$ and $X_2$ given by 
 \begin{align}
@@ -202,12 +218,12 @@ Alternately, we have CDF of $X_1$ and $X_2$ given by
     1-(x+1)e^{-x} & 0\le x < \infty\\
     \end{cases}
 \end{align}
-
 Thus, 
 \begin{align}
-    \pr{X_1\le X_2} &= \int_{-\infty}^{\infty} F_{X_1}(x)f(X_2)dX\\
+    \pr{X_1\le X_2} &= \int_{-\infty}^{\infty} F_{X_1}(x)f_{X_2}(x)dx\\
                 &= \int_0^\infty(1-e^{-x})(xe^{-x})dx\\
                 &= \cfrac{3}{4}\\
                 &= 0.75
 \end{align}
 \end{document}
+
